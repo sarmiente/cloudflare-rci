@@ -1,0 +1,69 @@
+---
+import { Icon } from "astro-icon/components"
+import Logo from "../../assets/RCI_logo_variacion_one.svg"
+
+const navigationMenu = {
+    links: [
+        {href: '/nosotros', text: 'Nosotros'},
+        {href: '#servicios', text: 'Servicios'},
+		{href: '#noticias', text: 'Noticias'},
+        {href: '#contacto', text: 'Contacto'},
+    ]
+}
+---
+
+<footer class="w-full bg-background py-6 md:py-5">
+
+  <div class="flex flex-col items-center py-10 pt-6 space-y-5">
+    <!-- Brand Logo -->
+	<a href="/" class="hover:cursor-pointer hover:scale-105 transition">
+		<Logo width={150} height={80} />		
+	</a>
+
+    <!-- nav - start -->
+    <ul class="items-center gap-4 flex">
+      {
+              navigationMenu.links.map((item) => (
+                  <li><a href={item.href} class="font-heading md:text-xl text-sm underline-offset-2 hover:text-main focus:outline-hidden focus:underline" aria-current="page">{item.text}</a></li>
+           ))
+          }
+      
+    </ul>
+    <!-- nav - end -->
+
+    <!-- social - start -->
+    <div class="flex gap-4">
+      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
+        <Icon name="instagram" size={30} />
+      </a>
+
+      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
+        <Icon name="facebook" size={30} />
+      </a>
+
+      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
+        <Icon name="linkedin" size={30} />
+      </a>
+
+  
+    </div>
+    <!-- social - end -->
+  </div>
+
+  <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
+    <div class="flex items-center gap-2 text-sm font-body">
+      RCI SAS © 2025. Todos los derechos reservados.
+    </div>
+
+    <p class="text-center text-xs font-body md:text-left ">
+      
+      <a href="#" class="text-xs  hover:text-amber-500">sarpin.agency</a>
+    </p>
+
+    <div class="flex gap-4 font-body">
+      <a href="#" class="text-sm  hover:text-main">Política de privacidad</a>
+      
+      <a href="#" class="text-sm  hover:text-main">Términos y condiciones</a>
+    </div>
+  </div>
+</footer>

@@ -11,14 +11,20 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@astrojs/alpinejs": "^0.4.3",
 		"@astrojs/cloudflare": "^12.3.0",
 		"@astrojs/mdx": "^4.2.1",
 		"@astrojs/rss": "^4.0.11",
 		"@astrojs/sitemap": "^3.3.0",
-		"astro": "^5.5.4"
+		"@tailwindcss/vite": "^4.0.15",
+		"alpinejs": "^3.14.9",
+		"astro": "^5.5.4",
+		"astro-icon": "^1.1.5",
+		"tailwindcss": "^4.0.15"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250321.0",
+		"@types/alpinejs": "^3.13.11",
 		"wrangler": "^4.4.0"
 	}
 }
