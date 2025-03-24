@@ -10,6 +10,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
   site: 'https://rcisas.com',
   integrations: [mdx(), sitemap(),icon()],
   adapter: cloudflare({
