@@ -18,11 +18,7 @@ export default defineConfig({
       enabled: true
     }
   }),
-  experimental: {
-    svg: true,
-    responsiveImages: true,
-  },
-  image: {
+    image: {
     remotePatterns: [{ protocol: "https" }],
   }, 
   vite: {

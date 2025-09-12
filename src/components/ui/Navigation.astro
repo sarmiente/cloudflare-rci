@@ -4,9 +4,9 @@ import Logo from "../../assets/Logo_RCI.svg";
 const navigationMenu = {
   links: [
     { href: "/nosotros", text: "Nosotros" },
-    { href: "#servicios", text: "Servicios" },
-    { href: "/noticias", text: "Noticias" },
-    { href: "#contacto", text: "Contacto" },
+    { href: "/servicios", text: "Servicios" },
+    { href: "/blog", text: "Noticias" },
+    { href: "/contacto", text: "Contacto" },
   ],
 };
 ---
@@ -14,22 +14,22 @@ const navigationMenu = {
 <nav
   x-data="{ mobileMenuIsOpen: false }"
   x-on:click.away="mobileMenuIsOpen = false"
-  class="container mx-auto flex items-center justify-between px-4 py-2"
+  class="container mx-auto flex items-center justify-between px-4 py-2 sticky"
   aria-label="RCI menu"
 >
   <!-- Brand Logo -->
   <a href="/" class="hover:cursor-pointer">
-    <Logo width={250} height={80} />
+    <Logo width={200} height={80} />
   </a>
 
   <!-- Desktop Menu -->
-  <ul class="hidden items-center gap-4 md:flex">
+  <ul class="hidden items-center gap-4 lg:flex">
     {
       navigationMenu.links.map((item) => (
-        <li>
+        <li class="hover:-translate-y-1 transition">
           <a
             href={item.href}
-            class="font-heading text-xl underline-offset-2 hover:text-main focus:outline-hidden focus:underline"
+            class="font-body text-lg font-light  underline-offset-2 hover:text-main focus:outline-hidden focus:underline "
             aria-current="page"
           >
             {item.text}
@@ -38,20 +38,22 @@ const navigationMenu = {
       ))
     }
   </ul>
-  <div class="hidden md:flex gap-2">
+  <div class="hidden lg:flex gap-2">
     <button
-      class="bg-main text-xl hover:bg-third p-2 font-heading text-white rounded-lg cursor-pointer"
+      class="bg-main text-lg hover:bg-third p-2 font-body font-medium text-white rounded-lg cursor-pointer hover:scale-105 transition"
     >
-      <a href="">Cotizar ahora</a>
+      <a href="">Cotizar Servicio</a>
     </button>
   </div>
+
+
   <!-- Mobile Menu Button -->
   <button
     x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen"
     x-bind:aria-expanded="mobileMenuIsOpen"
     x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null"
     type="button"
-    class="flex text-on-surface md:hidden"
+    class="flex text-on-surface lg:hidden"
     aria-label="mobile menu"
     aria-controls="mobileMenu"
   >
@@ -88,6 +90,8 @@ const navigationMenu = {
         d="M6 18 18 6M6 6l12 12"></path>
     </svg>
   </button>
+
+
   <!-- Mobile Menu -->
   <ul
     x-cloak
@@ -106,7 +110,7 @@ const navigationMenu = {
         <li class="py-4">
           <a
             href="#"
-            class="w-full text-5xl font-heading text-primary focus:underline dark:text-primary-dark"
+            class="w-full text-4xl font-heading text-primary focus:underline dark:text-primary-dark"
             aria-current="page"
           >
             {item.text}
@@ -115,9 +119,10 @@ const navigationMenu = {
       ))
     }
     <button
-      class="bg-main hover:bg-main/80 px-4 py-2 font-body text-white rounded-lg cursor-pointer"
+      class="bg-main hover:bg-main/80 px-4 py-2 text-white rounded-lg cursor-pointer"
     >
-      <a href="">Cotizar ahora</a>
+      <a href="" class="font-heading">Cotizar ahora</a>
     </button>
   </ul>
+
 </nav>

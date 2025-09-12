@@ -5,9 +5,10 @@ import Logo from "../../assets/Logo_RCI.svg"
 const navigationMenu = {
     links: [
         {href: '/nosotros', text: 'Nosotros'},
-        {href: '#servicios', text: 'Servicios'},
-		{href: '#noticias', text: 'Noticias'},
-        {href: '#contacto', text: 'Contacto'},
+        {href: '/servicios', text: 'Servicios'},
+		{href: '/blog', text: 'Noticias'},
+    {href: '/unete', text: 'Únete'},
+        {href: '/contacto', text: 'Contacto'},
     ]
 }
 ---
@@ -24,7 +25,8 @@ const navigationMenu = {
     <ul class="items-center gap-4 flex">
       {
               navigationMenu.links.map((item) => (
-                  <li><a href={item.href} class="font-heading md:text-xl text-sm underline-offset-2 hover:text-main focus:outline-hidden focus:underline" aria-current="page">{item.text}</a></li>
+                  <li class="hover:-translate-y-1 transition">
+                    <a href={item.href} class="font-light font-body md:text-xl text-sm underline-offset-2 hover:text-main focus:outline-hidden focus:underline" aria-current="page">{item.text}</a></li>
            ))
           }
       
@@ -57,7 +59,7 @@ const navigationMenu = {
 
     <p class="text-center text-xs font-body md:text-left ">
       
-      <a href="#" class="text-xs  hover:text-amber-500">sarpin.agency</a>
+      <a href="https://sarpin.agency/" target="_blank" class="text-xs  hover:text-amber-500">sarpin.agency</a>
     </p>
 
     <div class="flex gap-4 font-body">
