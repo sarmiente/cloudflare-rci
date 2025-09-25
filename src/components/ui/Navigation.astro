@@ -14,16 +14,16 @@ const navigationMenu = {
 <nav
   x-data="{ mobileMenuIsOpen: false }"
   x-on:click.away="mobileMenuIsOpen = false"
-  class="container mx-auto flex items-center justify-between px-4 py-2 sticky"
+  class="mx-auto flex items-center justify-between p-2 fixed z-50 bg-white w-full shadow-2xs"
   aria-label="RCI menu"
 >
   <!-- Brand Logo -->
   <a href="/" class="hover:cursor-pointer">
-    <Logo width={200} height={80} />
+    <Logo width={180} height={70} />
   </a>
 
   <!-- Desktop Menu -->
-  <ul class="hidden items-center gap-4 lg:flex">
+  <ul class="hidden items-center gap-4 md:flex">
     {
       navigationMenu.links.map((item) => (
         <li class="hover:-translate-y-1 transition">
@@ -38,14 +38,13 @@ const navigationMenu = {
       ))
     }
   </ul>
-  <div class="hidden lg:flex gap-2">
-    <button
-      class="bg-main text-lg hover:bg-third p-2 font-body font-medium text-white rounded-lg cursor-pointer hover:scale-105 transition"
-    >
-      <a href="">Cotizar Servicio</a>
+
+
+  <div class="hidden md:flex gap-2">
+    <button class="bg-main text-lg hover:bg-third p-2 font-body font-medium text-white rounded-lg cursor-pointer hover:scale-105 transition">
+      <a href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad" target="_blank" >Cotizar Servicio</a>
     </button>
   </div>
-
 
   <!-- Mobile Menu Button -->
   <button
@@ -53,7 +52,7 @@ const navigationMenu = {
     x-bind:aria-expanded="mobileMenuIsOpen"
     x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null"
     type="button"
-    class="flex text-on-surface lg:hidden"
+    class="flex md:hidden"
     aria-label="mobile menu"
     aria-controls="mobileMenu"
   >
@@ -103,14 +102,20 @@ const navigationMenu = {
     x-transition:leave-start="translate-y-0"
     x-transition:leave-end="-translate-y-full"
     id="mobileMenu"
-    class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col divide-y bg-white divide-outline rounded-b-radius gap-2 px-6 pb-6 pt-10 dark:divide-outline-dark dark:border-outline-dark text-center md:hidden"
+    class="fixed h-screen overflow-y-auto inset-x-0 top-0 flex flex-col  bg-white divide-outline rounded-b-radius gap-2 px-6 pb-6 pt-[15%] text-center md:hidden z-10 transition"
   >
-    {
+<div class="flex justify-center">
+          <a href="/" class="hover:cursor-pointer hover:scale-105 transition">
+            <Logo width={200} height={100} />
+          </a>
+        </div>
+   <div>
+     {
       navigationMenu.links.map((item) => (
-        <li class="py-4">
+        <li class="py-6">
           <a
-            href="#"
-            class="w-full text-4xl font-heading text-primary focus:underline dark:text-primary-dark"
+            href={item.href}
+            class="w-full text-3xl font-body uppercase focus:underline"
             aria-current="page"
           >
             {item.text}
@@ -118,10 +123,12 @@ const navigationMenu = {
         </li>
       ))
     }
+   </div>
     <button
-      class="bg-main hover:bg-main/80 px-4 py-2 text-white rounded-lg cursor-pointer"
+      class="bg-main hover:bg-main/80 px-4 text-lg py-2 text-white rounded-lg cursor-pointer"
     >
-      <a href="" class="font-heading">Cotizar ahora</a>
+      <a href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad" target="_blank" class="font-heading">Cotizar ahora</a>
+      
     </button>
   </ul>
 

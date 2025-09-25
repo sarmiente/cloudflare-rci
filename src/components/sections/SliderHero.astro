@@ -28,7 +28,7 @@ const heroImages = [
 
 ---
 
-<section class="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
+<section class="relative h-screen flex items-center bg-gradient-to-br from-slate-900 to-slate-800 overflow-hidden">
 
   <!-- Background Images -->
   <div class="absolute inset-0">
@@ -77,7 +77,7 @@ const heroImages = [
   
 
 <!-- Content -->
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20" >
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-40 md:mt-5" >
     <div class="max-w-4xl">
       <div class="flex items-center gap-3 mb-6" >
         
@@ -97,9 +97,19 @@ const heroImages = [
           Instalamos soluciones modernas de seguridad que se adaptan a tus necesidades: CCTV, control de acceso, cableado estructurado y sistemas contra incendios. Protección real para cada espacio.
       </p>
 
-      <div  data-aos="fade-up" class="flex flex-col sm:flex-row gap-4 mb-10">
-        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-heading font-bold rounded-xl hover:scale-105 transition">
-          Cotizar gratis
+      <div  data-aos="fade-up" class="flex flex-col sm:flex-row gap-4 mb-10 ">
+        <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-heading font-bold rounded-xl hover:scale-105 transition">
+          <a href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad" target="_blank">Agenda una visita</a>
+          <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
         </button>
         
       </div>
@@ -107,7 +117,8 @@ const heroImages = [
       <div  data-aos="fade-up" class="grid grid-cols-1 sm:grid-cols-3 gap-6 font-body">
         <div  class="flex items-center gap-3">
           <Chulito class="w-5 h-5" />
-          <span class="text-gray-200">Productos certificados</span>
+              <span class="text-gray-200">Personal Tecnico Experto y Especializado</span>
+          
         </div>
         <div class="flex items-center gap-3">
         <Chulito class="w-5 h-5" />
@@ -115,7 +126,7 @@ const heroImages = [
         </div>
         <div class="flex items-center gap-3">
         <Chulito class="w-5 h-5" />
-          <span class="text-gray-200">Personal Tecnico Experto y Especializado</span>
+      <span class="text-gray-200">Productos certificados</span>
         </div>
       </div>
     </div>

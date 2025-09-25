@@ -1,8 +1,8 @@
 ---
-import WhatsappButton from "../components/buttons/WhatsappButton.astro";
-import Head from "../components/Head.astro"
-import Footer from "../components/ui/Footer.astro";
-import Navigation from "../components/ui/Navigation.astro";
+import WhatsappButton from "@/components/buttons/WhatsappButton.astro";
+import Head from "@/components/Head.astro"
+import Footer from "@/components/ui/Footer.astro";
+import Navigation from "@/components/ui/Navigation.astro";
 import "../styles/global.css";
 
 
@@ -10,9 +10,9 @@ import "../styles/global.css";
 
 <!doctype html>
 <html lang="es">
-	<Head>
+	<Head />
 
-	</Head>
+	
 	<body>
 		<Navigation />
 		<WhatsappButton />
@@ -47,7 +47,7 @@ import "../styles/global.css";
 	html {
 	  scroll-behavior: smooth;
 	  scrollbar-width: thin; /* Firefox */
-	  scrollbar-color: #002E90 #f3f4f6; /* Colores en Firefox */
+	  scrollbar-color: #00747C #f3f4f6; /* Colores en Firefox */
 	}
   
 	html::-webkit-scrollbar {
@@ -60,12 +60,12 @@ import "../styles/global.css";
 	}
   
 	html::-webkit-scrollbar-thumb {
-	  background-color: #002E90; /* Color del thumb */
+	  background-color: #00747C; /* Color del thumb */
 	  border-radius: 4px; /* Bordes redondeados */
 	  border: 2px solid #f3f4f6; /* Margen interno para que el thumb no ocupe todo */
 	}
   
 	html::-webkit-scrollbar-thumb:hover {
-	  background-color: #002E90; /* Cambia el color al pasar el cursor */
+	  background-color: #00747C; /* Cambia el color al pasar el cursor */
 	}
   </style>

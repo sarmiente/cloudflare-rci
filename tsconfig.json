@@ -3,7 +3,12 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "baseUrl": ".",
     "strictNullChecks": true,
+    "paths": {
+      "@/sections/*": ["./src/components/sections*"],
+      "@/*": ["./src/*"],
+    },
     "types": [
         "@cloudflare/workers-types/2023-07-01"
     ]

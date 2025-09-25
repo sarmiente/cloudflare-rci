@@ -1,10 +1,102 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Newsletter from "@/components/sections/Newsletter.astro";
 
+const services = [
+  {
+    img: "/sec_camera.jpg",
+    alt: "Instalación y mantenimiento de CCTV",
+    short: "CCTV",
+    title: "Instalación y mantenimiento de CCTV",
+    sub: "Vigila lo que más importa con la tecnología más confiable. Nuestro servicio de instalación y mantenimiento de CCTV garantiza imágenes claras, monitoreo constante y la tranquilidad de saber que siempre estarás un paso adelante frente a cualquier riesgo."
+  },
+  {
+    img: "https://img.freepik.com/free-photo/man-getting-intercom-read-his-fingerprint-open-door-with-gloves_176474-2789.jpg?t=st=1724708641~exp=1724712241~hmac=7d48901837ad1c99d646ed945c00ead402de0b6159570a31a49dd7ff834b2357&w=740",
+    alt: "Instalacion de Sistemas de Control de Acceso",
+    short: "Control de Acceso",
+    title: "Instalacion de Sistemas de Control de Acceso",
+    sub: "Olvídate de llaves perdidas o accesos no autorizados. Con nuestros sistemas de control de acceso tendrás el poder de decidir quién entra, cuándo y dónde, con soluciones inteligentes y adaptadas a tus necesidades.”"
+  },
+  {
+    img: "/network.jpg",
+    alt: "Soluciones de Cableado Estructurado",
+    short: "Cableado Estructurado",
+    title: "Soluciones de Cableado Estructurado",
+    sub: "Conectamos tu negocio al futuro. Nuestro cableado estructurado asegura velocidad, estabilidad y orden en tus redes, para que tu empresa trabaje siempre con el máximo rendimiento."
+  },
+  {
+    img: "https://img.freepik.com/free-photo/smoke-alarm-isolated-white_93675-132063.jpg?t=st=1724708899~exp=1724712499~hmac=c645c811599c40da79bd71da05ebe9a51141b3d102eb5b556425338f249eb154&w=740",
+    alt: "Instalación de sistemas de Detección de Incendios",
+    short: "Deteccion de Incendios",
+    title: "Instalación de sistemas de Detección de Incendios",
+    sub: "La seguridad empieza por la prevención. Nuestros sistemas de detección de incendios reaccionan al instante, protegiendo vidas, activos y la continuidad de tu negocio."
+  }
+]
 
 ---
 
 
 <Layout title="Servicios">
+         <section class="py-12 lg:py-32">
+	
+    <div class="mx-auto max-w-7xl space-y-7 px-6 mt-[20%] md:mt-15">
+			<h1 class=" font-heading font-medium uppercase">Nuestros Servicios</h1>
+      
+      <h2 class="font-heading max-w-5xl text-4xl font-medium lg:text-5xl text-main">
+        Ofrecemos soluciones integrales para proteger personas, empresas y propiedades con la mejor tecnología y un servicio profesional confiable.
+      </h2>
+     
+    </div>
+  </section>
+
+ 
+
+  <section class="relative z-10 mb-36 py-10 lg:py-20">
+    <div class="mx-auto max-w-8xl space-y-36 px-4 sm:px-12 lg:px-8 xl:px-16">
+      {
+        services.map((index) => (
+            <div class="mx-auto">
+        <span class="font-heading font-medium uppercase">{index.short}</span>
+        <div class="mt-14 gap-4 sm:grid sm:grid-cols-2 md:gap-6 lg:gap-12">
+          <h2 class="text-3xl font-bold sm:text-4xl font-heading text-main">{index.title}</h2>
+          <div class="mt-6 space-y-6 text-gray-700 sm:mt-0 font-body">
+            <p>
+                {index.sub}
+            </p>
+            <a
+          href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad" target="_blank"
+          class="font-body inline-block rounded-full bg-second px-10 py-3 text-xl font-medium text-white shadow-lg transition hover:bg-main focus:outline-none focus:ring-2 focus:ring-third focus:ring-offset-2"
+        >
+          Cotizar servicio
+        </a>
+          </div>
+        </div>
+          <div class="mt-24 grid gap-4 sm:grid-cols-2 md:gap-6 lg:gap-12 xl:grid-cols-6">
+          <div class="mx-auto xl:col-span-3">
+            <img
+              class="rounded-md"
+              src={index.img}
+              alt={index.alt}
+              width="500"
+              height="500"
+            />
+          </div>
+          <div class="mx-auto xl:col-span-3">
+            <img
+              class="rounded-md hidden md:flex"
+              src={index.img}
+              alt={index.alt}
+              width="500"
+              height="500"
+            />
+          </div>
+        </div>
+      </div>
+        ))
+      }
+      </div>
+  </section>
+
+  <Newsletter />
 
 </Layout>

@@ -1,71 +1,174 @@
 ---
-import { Icon } from "astro-icon/components"
-import Logo from "../../assets/Logo_RCI.svg"
+import { Icon } from "astro-icon/components";
+import Logo from "../../assets/Logo_RCI.svg";
 
-const navigationMenu = {
-    links: [
-        {href: '/nosotros', text: 'Nosotros'},
-        {href: '/servicios', text: 'Servicios'},
-		{href: '/blog', text: 'Noticias'},
-    {href: '/unete', text: 'Únete'},
-        {href: '/contacto', text: 'Contacto'},
-    ]
-}
+const FooterLinks = [
+  {
+    title: "Compañia",
+    items: [
+      { href: "/nosotros", text: "Nosotros" },
+      { href: "/servicios", text: "Servicios" },
+      { href: "/blog", text: "Noticias" },
+      { href: "/unete", text: "Únete" }
+    ],
+  },
+  {
+    title: "Servicios",
+    items: [
+      { href: "/instalacion-cctv", text: "Instalacion de CCTV" },
+      { href: "/control-de-acceso", text: "Control de Acceso" },
+      { href: "cableado-estructurado/", text: "Cableado Estructurado" },
+      { href: "/deteccion-de-incendios", text: "Detección de Incendios" }
+    ],
+  },
+  {
+    title: "Links",
+    items: [
+      { href: "/", text: "Soporte" },
+      { href: "/", text: "PQRs" },
+      { href: "/", text: "Chatea en vivo" }
+    ],
+  },
+];
+
+const SocialLinks = [
+  { href: "#", name: "Facebook", icon: "facebook" },
+  { href: "https://www.instagram.com/rci_sas", name: "Instagram", icon: "instagram" },
+  { href: "#", name: "LinkedIn", icon: "linkedin" },
+];
+
+const ContactInfo = [
+  {
+    type: "email",
+    href: "mailto:proyectos@rcisas.com",
+    text: "proyectos@rcisas.com",
+    icon: "mail", // simplificado
+  },
+  {
+    type: "phone",
+    href: "tel:+573136775143",
+    text: "+57 (313) 677 5143",
+    icon: "telefono",
+  },
+  {
+    type: "address",
+    text: "CALLE 13 #25 - 1, TURBACO, BOLÍVAR",
+    icon: "location",
+  },
+];
 ---
 
-<footer class="w-full bg-background py-6 md:py-5">
-
-  <div class="flex flex-col items-center py-10 pt-6 space-y-5">
-    <!-- Brand Logo -->
-	<a href="/" class="hover:cursor-pointer hover:scale-105 transition">
-		<Logo width={250} height={100} />		
-	</a>
-
-    <!-- nav - start -->
-    <ul class="items-center gap-4 flex">
-      {
-              navigationMenu.links.map((item) => (
-                  <li class="hover:-translate-y-1 transition">
-                    <a href={item.href} class="font-light font-body md:text-xl text-sm underline-offset-2 hover:text-main focus:outline-hidden focus:underline" aria-current="page">{item.text}</a></li>
-           ))
-          }
+<footer class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       
-    </ul>
-    <!-- nav - end -->
+      <!-- Logo + descripción -->
+      <div>
+        <div class="flex justify-center sm:justify-start">
+          <a href="/" class="hover:cursor-pointer hover:scale-105 transition">
+            <Logo width={250} height={100} />
+          </a>
+        </div>
 
-    <!-- social - start -->
-    <div class="flex gap-4">
-      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-        <Icon name="instagram" size={30} />
-      </a>
+        <p class="font-body mt-6 max-w-md text-center leading-relaxed sm:max-w-xs sm:text-left">
+         La seguridad empieza por la prevención.
+        </p>
 
-      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-        <Icon name="facebook" size={30} />
-      </a>
+        <!-- Redes sociales -->
+        <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+          {SocialLinks.map((social) => (
+            <li>
+              <a
+                href={social.href}
+                rel="noreferrer"
+                target="_blank"
+                aria-label={social.name}
+                class="text-main transition hover:text-main/75"
+              >
+                <Icon name={social.icon} size={30} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <a href="#" target="_blank" class="text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600">
-        <Icon name="linkedin" size={30} />
-      </a>
+      <!-- Links dinámicos -->
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
+        {FooterLinks.map((section, i) => (
+          <div class="text-center sm:text-left">
+            <p class="text-lg font-heading font-medium text-gray-900">{section.title}</p>
+            <ul class="mt-8 space-y-4 text-sm">
+              {section.items.map((item, j) => (
+                <li class="font-body">
+                  <a
+                    class="text-gray-700 transition hover:text-second"
+                    href={item.href}
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
-  
+        
+        <!-- Contacto -->
+<div class="text-center sm:text-left">
+  <p class="text-lg font-medium font-heading text-gray-900">Contáctanos</p>
+
+  <ul class="mt-8 space-y-4 text-sm">
+    {ContactInfo.map((c, idx) => (
+      <li 
+        
+        class="flex items-center font-body gap-2 justify-center sm:justify-start"
+      >
+        <!-- Icono -->
+        <Icon 
+          name={c.icon} 
+          size={20} 
+          class="text-gray-900 shrink-0" 
+          aria-hidden="true"
+        />
+
+        <!-- Texto dinámico -->
+        {c.href ? (
+          <a 
+            href={c.href} 
+            aria-label={c.text} 
+            class="flex-1 text-gray-700 transition hover:text-gray-700/75"
+          >
+            {c.text}
+          </a>
+        ) : (
+          <address class="flex-1 text-gray-700 not-italic">
+            {c.text}
+          </address>
+        )}
+      </li>
+    ))}
+  </ul>
+</div>
+
+      </div>
     </div>
-    <!-- social - end -->
-  </div>
 
-  <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
-    <div class="flex items-center gap-2 text-sm font-body">
-      RCI SAS © 2025. Todos los derechos reservados.
-    </div>
+    <!-- Footer bottom -->
+    <div class="mt-12 mx-auto flex flex-col items-center justify-between gap-4 md:flex-row">
+      <p class="text-sm font-body">
+        <span class="font-medium">RCI SAS © 2025. </span> Todos los derechos reservados.
+      </p>
 
-    <p class="text-center text-xs font-body md:text-left ">
-      
-      <a href="https://sarpin.agency/" target="_blank" class="text-xs  hover:text-amber-500">sarpin.agency</a>
-    </p>
+      <p class="text-center text-xs font-body md:text-left">
+        <a href="https://sarpin.agency/" target="_blank" class="text-xs hover:text-amber-500">
+          sarpin.agency
+        </a>
+      </p>
 
-    <div class="flex gap-4 font-body">
-      <a href="#" class="text-sm  hover:text-main">Política de privacidad</a>
-      
-      <a href="#" class="text-sm  hover:text-main">Términos y condiciones</a>
+      <div class="flex gap-4 font-body">
+        <a href="#" class="text-sm hover:text-main">Política de privacidad</a>
+        <a href="#" class="text-sm hover:text-main">Términos y condiciones</a>
+      </div>
     </div>
   </div>
 </footer>
