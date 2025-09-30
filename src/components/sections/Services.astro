@@ -3,24 +3,28 @@
 const services = [
   {
     img: "/sec_camera.jpg",
+    src: "/servicios",
     alt: "Instalación y mantenimiento de CCTV",
     title: "Instalación y mantenimiento de CCTV",
     sub: " Buscamos la máxima cobertura y eficiencia."
   },
   {
     img: "https://img.freepik.com/free-photo/man-getting-intercom-read-his-fingerprint-open-door-with-gloves_176474-2789.jpg?t=st=1724708641~exp=1724712241~hmac=7d48901837ad1c99d646ed945c00ead402de0b6159570a31a49dd7ff834b2357&w=740",
+    src: "/servicios",
     alt: "Instalacion de Sistemas de Control de Acceso",
     title: "Instalacion de Sistemas de Control de Acceso",
     sub: "Gestióna el acceso de manera segura y conveniente."
   },
   {
     img: "/network.jpg",
+    src: "/servicios",
     alt: "Soluciones de Cableado Estructurado",
     title: "Soluciones de Cableado Estructurado",
     sub: "Garantizamos una conectividad robusta y escalable."
   },
   {
     img: "https://img.freepik.com/free-photo/smoke-alarm-isolated-white_93675-132063.jpg?t=st=1724708899~exp=1724712499~hmac=c645c811599c40da79bd71da05ebe9a51141b3d102eb5b556425338f249eb154&w=740",
+    src: "/servicios",
     alt: "Instalación de sistemas de Detección de Incendios",
     title: "Instalación de sistemas de Detección de Incendios",
     sub: "Minimiza los riesgos de incendios con detección rápida."
@@ -69,7 +73,7 @@ const services = [
         </div>
         <div class="space-y-2 text-center">
             <h3 class="text-lg lg:text-2xl font-bold font-heading">
-                {index.title}
+                <a href={index.src}>{index.title}</a>
             </h3>
             <p class="font-body">
                 {index.sub}

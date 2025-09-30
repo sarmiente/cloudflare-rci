@@ -1,24 +1,47 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../src/consts";
 
+const { title } = Astro.props;
 ---
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon_rci.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{SITE_TITLE}</title>
-    <meta name="description" content={SITE_DESCRIPTION} />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon_rci.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title} - {SITE_TITLE}</title>
+  <meta name="description" content={SITE_DESCRIPTION} />
 
-        <!-- Alpine Core -->
-    <script
-    is:inline
+  <ClientRouter />
+
+  <!-- Alpine Core -->
+  <script
+    defer
     src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
-    <script is:inline
-	    	src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.13.5/dist/cdn.min.js"
-	></script>
-	<script is:inline
-		src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.3.0/dist/alpine-clipboard.js"
-	></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.13.5/dist/cdn.min.js"
+  ></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.3.0/dist/alpine-clipboard.js"
+  ></script>
+
+  <!-- Brevo Conversations {literal} -->
+  <script is:inline>
+    (function (d, w, c) {
+      w.BrevoConversationsID = "671f9c05be5b766e380c9f40";
+      w[c] =
+        w[c] ||
+        function () {
+          (w[c].q = w[c].q || []).push(arguments);
+        };
+      var s = d.createElement("script");
+      s.async = true;
+      s.src = "https://conversations-widget.brevo.com/brevo-conversations.js";
+      if (d.head) d.head.appendChild(s);
+    })(document, window, "BrevoConversations");
+  </script>
+  <!-- /Brevo Conversations {/literal} -->
 </head>

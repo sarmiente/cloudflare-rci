@@ -18,31 +18,32 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-6">
-    <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
-      <!-- Imagen -->
-      <div class="flex items-center justify-center">
-        <img
-          class="w-full max-w-md rounded-md object-cover shadow-md md:max-w-full"
-          src="https://cdn.pixabay.com/photo/2019/08/26/06/38/security-4430919_1280.jpg"
-          alt="Oficina moderna con seguridad"
-          width="500"
-          height="500"
-        />
-      </div>
-
+  <section class="mx-auto max-w-2xl px-6">
       <!-- Formulario -->
       <div class="bg-slate-100 rounded-md p-6 shadow-md sm:p-8">
-        <form action="" class="space-y-6">
+        <form id="brevo-form" action="" class="space-y-6">
           <div>
-            <label for="fullname" class="block text-sm font-medium text-gray-700">
-              Nombre completo
+            <label for="nombre" class="block text-sm font-medium text-gray-700">
+              Nombre
             </label>
             <input
               type="text"
-              id="fullname"
-              name="fullname"
+              id="nombre"
+              name="NOMBRE"
               placeholder="Tu nombre completo"
+              class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+            />
+          </div>
+
+          <div>
+            <label for="whatsapp" class="block text-sm font-medium text-gray-700">
+              Telefono
+            </label>
+            <input
+              type="text"
+              id="whatsapp"
+              name="WHATSAPP"
+              placeholder="Telefono"
               class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
             />
           </div>
@@ -54,19 +55,19 @@ import Layout from "../layouts/Layout.astro";
             <input
               type="email"
               id="email"
-              name="email"
+              name="EMAIL"
               placeholder="ejemplo@email.com"
               class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
             />
           </div>
 
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700">
+            <label for="mensaje" class="block text-sm font-medium text-gray-700">
               Mensaje
             </label>
             <textarea
-              id="message"
-              name="message"
+              id="mensaje"
+              name="MENSAJE"
               rows="5"
               placeholder="Cuéntanos sobre tu proyecto..."
               class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
@@ -91,6 +92,69 @@ import Layout from "../layouts/Layout.astro";
           </button>
         </form>
       </div>
-    </div>
   </section>
+
+   <dialog id="responseDialog" class="mx-auto rounded-xl p-6 shadow-lg my-auto">
+      <p id="responseMessage" class="font-body"></p>
+        <form method="dialog">
+          <button class="mt-4 px-4 py-2 rounded-lg bg-blue-600 text-white">Cerrar</button>
+        </form>
+  </dialog>
+
+
 </Layout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("brevo-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const nombre = e.target.NOMBRE.value;
+      const email = e.target.EMAIL.value;
+      const mensaje = e.target.MENSAJE.value;
+      const whatsapp = e.target.WHATSAPP.value;
+
+      try {
+  const response = await fetch("https://api.brevo.com/v3/contacts", {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "api-key": import.meta.env.PUBLIC_API_KEY, // ⚠️
+    },
+    body: JSON.stringify({
+      email: email,
+      attributes: {
+        NOMBRE: nombre,
+        WHATSAPP: whatsapp,
+        EMAIL: email,
+        MENSAJE: mensaje
+      },
+      listIds: [2]
+    })
+  });
+
+  const dialog = document.getElementById("responseDialog");
+  const messageEl = document.getElementById("responseMessage");
+
+  if (response.ok) {
+    messageEl.innerText = "✅ ¡Gracias por tu mensaje! Nos comunicaremos a la mayor brevedad posible.";
+    dialog.showModal(); // abre el modal
+    e.target.reset();
+  } else {
+    const error = await response.json();
+    console.error(error);
+    messageEl.innerText = "⚠️ Hubo un error: " + (error.message || "Intenta de nuevo");
+    dialog.showModal();
+  }
+} catch (error) {
+  console.error(error);
+  const dialog = document.getElementById("responseDialog");
+  const messageEl = document.getElementById("responseMessage");
+  messageEl.innerText = "❌ Error en la conexión con el servidor.";
+  dialog.showModal();
+}
+
+    });
+  })
+</script>
