@@ -198,33 +198,25 @@ import PhoneIcon from "../../icons/telefono.svg";
         
         e.preventDefault();
 
-        const nombre = e.target.NOMBRE.value;
-        const apellidos = e.target.APELLIDOS.value;
-        const email = e.target.EMAIL.value;
-        const whatsapp = e.target.WHATSAPP.value;
-        const servicio = e.target.SERVICIO.value;
-        const mensaje = e.target.MENSAJE.value;
+      const nombre = e.target.NOMBRE.value;
+      const apellidos = e.target.APELLIDOS?.value || "";
+      const email = e.target.EMAIL.value;
+      const whatsapp = e.target.WHATSAPP.value;
+      const servicio = e.target.SERVICIO?.value || "";
+      const mensaje = e.target.MENSAJE.value;
+
 
           try {
-              const response = await fetch("https://api.brevo.com/v3/contacts", {
+              const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                   "Accept": "application/json",
                   "Content-Type": "application/json",
-                  "api-key": import.meta.env.PUBLIC_API_KEY, // ⚠️
+                  
                 },
-                body: JSON.stringify({
-                  EMAIL: email,
-                  attributes: {
-                    NOMBRE: nombre,
-                    APELLIDOS: apellidos,
-                    EMAIL: email,
-                    WHATSAPP: whatsapp,
-                    SERVICIO: servicio,
-                    MENSAJE: mensaje 
-                  },
-                  listIds: [7]
-                })
+                body: JSON.stringify({ nombre, apellidos, email, whatsapp, servicio, mensaje,
+                  listId: 7
+           })
               });
 
               const dialog = document.getElementById("responseDialogSection");
