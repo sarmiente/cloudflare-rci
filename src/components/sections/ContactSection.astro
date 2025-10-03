@@ -109,7 +109,7 @@ import PhoneIcon from "../../icons/telefono.svg";
                         />
                       </div><div class="space-y-2">
                         <label
-                          for="apellidos"
+                          for="apellido"
                           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                           >Apellidos</label
                         ><input
@@ -133,20 +133,31 @@ import PhoneIcon from "../../icons/telefono.svg";
                         placeholder="tucorreo@ejemplo.com"
                         type="email"
                       />
-                    </div><div class="space-y-2">
-                      <label
-                        for="whatsapp"
-                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >Teléfono</label
-                      ><input
-                        id="whatsapp"
-                        name="WHATSAPP"
-                        required
-                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="(300) 123-4567"
-                        type="tel"
-                      />
-                    </div><div class="space-y-2">
+                    </div>
+                    <div class="space-y-2">
+  <label
+    for="whatsapp"
+    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+  >
+    Teléfono
+  </label>
+  <div class="flex">
+    <div
+              class="flex items-center h-10 p-3 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md text-sm select-none"
+            >
+              +57
+          </div>
+  <input
+    id="whatsapp"
+    name="WHATSAPP"
+    required
+    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    type="tel"
+
+  />
+  </div>
+</div>
+                    <div class="space-y-2">
                       <label
                         for="servicio"
                         class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -192,55 +203,50 @@ import PhoneIcon from "../../icons/telefono.svg";
         </form>
 </dialog>
       
+
+<!-- Script -->
 <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("form-brevo").addEventListener("submit", async function(e) {
-        
-        e.preventDefault();
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("form-brevo");
+    const dialog = document.getElementById("responseDialogSection");
+    const messageEl = document.getElementById("responseMessageSection");
 
-      const nombre = e.target.NOMBRE.value;
-      const apellidos = e.target.APELLIDOS?.value || "";
-      const email = e.target.EMAIL.value;
-      const whatsapp = e.target.WHATSAPP.value;
-      const servicio = e.target.SERVICIO?.value || "";
-      const mensaje = e.target.MENSAJE.value;
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
+      const data = new FormData(form);
+      const payload = {
+        nombre: data.get("NOMBRE"),
+        apellidos: data.get("APELLIDOS"),
+        email: data.get("EMAIL"),
+        whatsapp: "+57" + data.get("WHATSAPP").replace(/\D/g, ""),
+        mensaje: data.get("MENSAJE"),
+        listId: 7,
+      };
 
-          try {
-              const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                  "Accept": "application/json",
-                  "Content-Type": "application/json",
-                  
-                },
-                body: JSON.stringify({ nombre, apellidos, email, whatsapp, servicio, mensaje,
-                  listId: 7
-           })
-              });
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-              const dialog = document.getElementById("responseDialogSection");
-              const messageEl = document.getElementById("responseMessageSection");
-
-              if (response.ok){
-                messageEl.innerText = "✅ ¡Gracias por tu mensaje! Nos comunicaremos a la mayor brevedad posible.";
-                dialog.showModal();
-                e.target.reset();
-              } else {
-                const error = await response.json();
-                console.error(error);
-                messageEl.innerText = "⚠️ Hubo un error: " + (error.message || "Intenta de nuevo");
-                dialog.showModal();
-              }
-          } catch (error) {
-            console.error(error);
-
-            const dialog = document.getElementById("responseDialogSection");
-            const messageEl = document.getElementById("responseMessageSection");
-
-            messageEl.innerText = "❌ Error en la conexión con el servidor.";
-            dialog.showModal();            
-          }
-        })
-    })
+        if (response.ok) {
+          messageEl.innerText =
+            "✅ ¡Gracias por tu mensaje! Nos comunicaremos a la mayor brevedad posible.";
+          dialog.showModal();
+          form.reset();
+        } else {
+          const error = await response.json();
+          messageEl.innerText =
+            "⚠️ Hubo un error: " + (error.error?.message || "Intenta de nuevo");
+          dialog.showModal();
+        }
+      } catch (error) {
+        console.error(error);
+        messageEl.innerText = "❌ Error en la conexión con el servidor.";
+        dialog.showModal();
+      }
+    });
+  });
 </script>

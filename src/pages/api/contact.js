@@ -16,13 +16,15 @@ export async function POST({ request }) {
           NOMBRE: nombre,
           APELLIDOS: apellidos || "", // opcional
           WHATSAPP: whatsapp,
-          SERVICIO: servicio,
-          MENSAJE: mensaje,
+          SERVICIO: servicio || "",
+          MENSAJE: mensaje || "",
         },
         listIds: [listId], // tu lista en Brevo
         updateEnabled: true, // actualiza si ya existe
       }),
     });
+
+    
 
     const data = await response.json();
 

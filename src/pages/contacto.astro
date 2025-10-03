@@ -5,10 +5,9 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Contacto">
   <section class="py-12 lg:py-20">
     <div class="mx-auto max-w-7xl space-y-6 px-6 text-center md:text-left mt-[20%] md:mt-15">
-      <h1 class="font-heading font-medium uppercase tracking-wide ">
+      <h1 class="font-heading font-medium uppercase tracking-wide">
         Contáctanos
       </h1>
-
       <h2 class="font-heading max-w-4xl text-3xl font-medium text-main sm:text-4xl lg:text-6xl">
         ¿Tienes un proyecto en mente?
       </h2>
@@ -19,132 +18,166 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <section class="mx-auto max-w-2xl px-6">
-      <!-- Formulario -->
-      <div class="bg-slate-100 rounded-md p-6 shadow-md sm:p-8">
-        <form id="brevo-form" action="" class="space-y-6">
-          <div>
-            <label for="nombre" class="block text-sm font-medium text-gray-700">
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="nombre"
-              name="NOMBRE"
-              placeholder="Tu nombre completo"
-              class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
-            />
-          </div>
+    <!-- Formulario -->
+    <div class="bg-slate-100 rounded-md p-6 shadow-md sm:p-8">
+      <form id="brevo-form" class="space-y-6">
+        
+       <div class="grid grid-cols-2 gap-4">
+           <!-- Nombre -->
+        <div>
+          <label for="nombre" class="block text-sm font-medium text-gray-700">
+            Nombre <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="nombre"
+            name="NOMBRE"
+            required
+            placeholder="Nombre"
+            class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+          />
+        </div>
 
-          <div>
-            <label for="whatsapp" class="block text-sm font-medium text-gray-700">
-              Telefono
-            </label>
+         <!-- Apellido -->
+        <div>
+          <label for="apellido" class="block text-sm font-medium text-gray-700">
+            Apellido <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="apellidos"
+            name="APELLIDOS"
+            required
+            placeholder="Apellido(s)"
+            class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+          />
+        </div>
+       </div>
+
+        <!-- Teléfono con prefijo fijo -->
+        <div>
+          <label for="whatsapp" class="block text-sm font-medium text-gray-700">
+            Teléfono <span class="text-red-500">*</span>
+          </label>
+          <div class="flex items-center">
+            <div
+              class="flex items-center h-12 p-3 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md text-sm select-none"
+            >
+              +57
+          </div>
             <input
-              type="text"
               id="whatsapp"
               name="WHATSAPP"
-              placeholder="Telefono"
-              class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+              type="tel"
+              required
+              inputmode="numeric"
+              pattern="[0-9]{10}"
+              placeholder="3001234567"
+              class="flex h-12 w-full rounded-r-md border border-gray-300 px-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
             />
           </div>
+          <p class="text-xs text-gray-500 mt-1">Ingresa solo los 10 dígitos del número.</p>
+        </div>
 
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="EMAIL"
-              placeholder="ejemplo@email.com"
-              class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
-            />
-          </div>
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Correo electrónico <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="EMAIL"
+            required
+            placeholder="ejemplo@email.com"
+            class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+          />
+        </div>
 
-          <div>
-            <label for="mensaje" class="block text-sm font-medium text-gray-700">
-              Mensaje
-            </label>
-            <textarea
-              id="mensaje"
-              name="MENSAJE"
-              rows="5"
-              placeholder="Cuéntanos sobre tu proyecto..."
-              class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
-            ></textarea>
-          </div>
+        <!-- Mensaje -->
+        <div>
+          <label for="mensaje" class="block text-sm font-medium text-gray-700">
+            Mensaje
+          </label>
+          <textarea
+            id="mensaje"
+            name="MENSAJE"
+            rows="5"
+            placeholder="Cuéntanos sobre tu proyecto..."
+            class="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-700 focus:border-main focus:ring focus:ring-main/30"
+          ></textarea>
+        </div>
 
-          <button
-            type="submit"
-            class="group ml-auto flex items-center gap-2 rounded-md bg-main px-5 py-2 text-sm font-medium text-white shadow-md transition-all duration-300 hover:bg-primary/90"
+        <!-- Botón -->
+        <button
+          type="submit"
+          class="group ml-auto flex items-center gap-2 rounded-md bg-main px-5 py-2 text-sm font-medium text-white shadow-md transition-all duration-300 hover:bg-primary/90"
+        >
+          Enviar mensaje
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1.5"
           >
-            Enviar mensaje
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1.5"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-        </form>
-      </div>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </form>
+    </div>
   </section>
 
-   <dialog id="responseDialog" class="mx-auto rounded-xl p-6 shadow-lg my-auto">
-      <p id="responseMessage" class="font-body"></p>
-        <form method="dialog">
-          <button class="mt-4 px-4 py-2 rounded-lg bg-blue-600 text-white">Cerrar</button>
-        </form>
+  <!-- Modal -->
+  <dialog id="responseDialog" class="mx-auto rounded-xl p-6 shadow-lg my-auto">
+    <p id="responseMessage" class="font-body"></p>
+    <form method="dialog">
+      <button class="mt-4 px-4 py-2 rounded-lg bg-blue-600 text-white">Cerrar</button>
+    </form>
   </dialog>
-
-
 </Layout>
 
+<!-- Script -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("brevo-form").addEventListener("submit", async function(e) {
+    const form = document.getElementById("brevo-form");
+    const dialog = document.getElementById("responseDialog");
+    const messageEl = document.getElementById("responseMessage");
+
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const nombre = e.target.NOMBRE.value;
-      const apellidos = e.target.APELLIDOS?.value || "";
-      const email = e.target.EMAIL.value;
-      const whatsapp = e.target.WHATSAPP.value;
-      const servicio = e.target.SERVICIO?.value || "";
-      const mensaje = e.target.MENSAJE.value;
+      const data = new FormData(form);
+      const payload = {
+        nombre: data.get("NOMBRE"),
+        apellidos: data.get("APELLIDOS"),
+        email: data.get("EMAIL"),
+        whatsapp: "+57" + data.get("WHATSAPP").replace(/\D/g, ""),
+        mensaje: data.get("MENSAJE"),
+        listId: 2,
+      };
 
       try {
         const response = await fetch("/api/contact", {
           method: "POST",
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ nombre, apellidos, email, whatsapp, servicio, mensaje,
-            listId: 2
-           })
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
         });
 
-        const dialog = document.getElementById("responseDialog");
-        const messageEl = document.getElementById("responseMessage");
-
         if (response.ok) {
-          messageEl.innerText = "✅ ¡Gracias por tu mensaje! Nos comunicaremos a la mayor brevedad posible.";
+          messageEl.innerText =
+            "✅ ¡Gracias por tu mensaje! Nos comunicaremos a la mayor brevedad posible.";
           dialog.showModal();
-          e.target.reset();
+          form.reset();
         } else {
           const error = await response.json();
-          console.error(error);
-          messageEl.innerText = "⚠️ Hubo un error: " + (error.error?.message || "Intenta de nuevo");
+          messageEl.innerText =
+            "⚠️ Hubo un error: " + (error.error?.message || "Intenta de nuevo");
           dialog.showModal();
         }
       } catch (error) {
         console.error(error);
-        const dialog = document.getElementById("responseDialog");
-        const messageEl = document.getElementById("responseMessage");
         messageEl.innerText = "❌ Error en la conexión con el servidor.";
         dialog.showModal();
       }
