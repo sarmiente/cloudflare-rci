@@ -4,7 +4,7 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	const posts = await getCollection('blog', (post) => !post.data.draft);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,
@@ -13,10 +13,38 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { Content } = await render(post);
+const date = {
+  publishDate: new Date(post.data.pubDate),
+  updatedDate: post.data.updatedDate ? new Date(post.data.updatedDate) : null,
+};
+const { Content, headings } = await render(post);
 export const prerender = true;
+const filtered = headings.filter((h) => h.depth <= 2);
 ---
 
 <BlogPost {...post.data}>
+
+	 <!-- Metadata -->
+  <div class="article-meta text-sm text-dark">
+    
+    <time datetime={date.publishDate.toISOString()}>
+      {
+        date.publishDate.toLocaleDateString("es-CO", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </time>
+    {
+      post.data.read && (
+        <>
+          <span class="article-meta-divider" />
+          ⏱️
+          <span>{post.data.read} min de lectura</span>
+        </>
+      )
+    }
+  </div>
 	<Content />
 </BlogPost>

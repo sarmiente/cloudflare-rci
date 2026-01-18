@@ -1,6 +1,4 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = 'Redes, Conexiones e Ingenierias';
-export const SITE_DESCRIPTION = 'Garantizamos protección y conectividad eficiente para su negocio. Nuestro compromiso con la innovación, calidad y transparencia nos permite ofrecer soluciones escalables y adaptadas a las necesidades de cada cliente.';
+export const SITE_TITLE = 'CCTV, Control de Acceso y Cableado Estructurado en Colombia | RCI SAS';
+export const SITE_DESCRIPTION = 'Instalamos CCTV, cámaras de seguridad, control de acceso, cableado estructurado y sistemas de detección de incendios en Cartagena y Barranquilla. Seguridad y conectividad profesional.';
 export const SITE_URL = "https://rcisas.com";
+export const SITE_IMAGE = "/cctv-control-acceso-cartagena-barranquilla.svg";

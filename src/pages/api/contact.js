@@ -8,7 +8,7 @@ export async function POST({ request }) {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "api-key": import.meta.env.BREVO_API, // tu API key segura
+        "api-key": import.meta.env.BREVO_API, 
       },
       body: JSON.stringify({
         email,

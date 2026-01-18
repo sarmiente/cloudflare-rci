@@ -4,22 +4,28 @@ import Head from "@/components/Head.astro"
 import Footer from "@/components/ui/Footer.astro";
 import Navigation from "@/components/ui/Navigation.astro";
 import "../styles/global.css";
-const { title } = Astro.props;
+import Cookies from "@/components/cookies/Cookies.astro";
+const { title, description } = Astro.props;
 
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<Head title={title} />
+		<Head title={title} description={description} />
 	</head>
 
 	
 	<body>
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM3XCGNZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+ 
 		<Navigation />
 		<WhatsappButton />
 		<slot />
-
+		<Cookies />
 		<Footer />
 
 	</body>

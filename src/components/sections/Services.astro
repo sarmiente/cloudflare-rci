@@ -1,89 +1,100 @@
 ---
-
 const services = [
   {
     img: "/sec_camera.jpg",
-    src: "/servicios",
-    alt: "Instalación y mantenimiento de CCTV",
-    title: "Instalación y mantenimiento de CCTV",
-    sub: " Buscamos la máxima cobertura y eficiencia."
+    src: "/servicios/cctv",
+    alt: "Instalación de cámaras de seguridad y CCTV en Cartagena y Barranquilla",
+    title: "CCTV y cámaras de seguridad",
+    sub: "Instalación y mantenimiento de sistemas CCTV para empresas, edificios y hogares."
   },
   {
-    img: "https://img.freepik.com/free-photo/man-getting-intercom-read-his-fingerprint-open-door-with-gloves_176474-2789.jpg?t=st=1724708641~exp=1724712241~hmac=7d48901837ad1c99d646ed945c00ead402de0b6159570a31a49dd7ff834b2357&w=740",
-    src: "/servicios",
-    alt: "Instalacion de Sistemas de Control de Acceso",
-    title: "Instalacion de Sistemas de Control de Acceso",
-    sub: "Gestióna el acceso de manera segura y conveniente."
+    img: "https://img.freepik.com/free-photo/man-getting-intercom-read-his-fingerprint-open-door-with-gloves_176474-2789.jpg",
+    src: "/servicios/control-acceso",
+    alt: "Instalación de sistemas de control de acceso en Cartagena y Barranquilla",
+    title: "Sistemas de control de acceso",
+    sub: "Control de acceso biométrico, tarjetas y soluciones electrónicas seguras."
   },
   {
     img: "/network.jpg",
-    src: "/servicios",
-    alt: "Soluciones de Cableado Estructurado",
-    title: "Soluciones de Cableado Estructurado",
-    sub: "Garantizamos una conectividad robusta y escalable."
+    src: "/servicios/cableado-estructurado",
+    alt: "Instalación de cableado estructurado en Cartagena y Barranquilla",
+    title: "Cableado estructurado",
+    sub: "Diseño e instalación de redes de datos confiables y escalables."
   },
   {
-    img: "https://img.freepik.com/free-photo/smoke-alarm-isolated-white_93675-132063.jpg?t=st=1724708899~exp=1724712499~hmac=c645c811599c40da79bd71da05ebe9a51141b3d102eb5b556425338f249eb154&w=740",
-    src: "/servicios",
-    alt: "Instalación de sistemas de Detección de Incendios",
-    title: "Instalación de sistemas de Detección de Incendios",
-    sub: "Minimiza los riesgos de incendios con detección rápida."
+    img: "https://img.freepik.com/free-photo/smoke-alarm-isolated-white_93675-132063.jpg",
+    src: "/servicios/deteccion-incendios",
+    alt: "Instalación de sistemas de detección de incendios en Cartagena y Barranquilla",
+    title: "Detección de incendios",
+    sub: "Sistemas de detección y alarma contra incendios conforme a normativa."
   }
-]
-
+];
 ---
 
-<section id="servicios" class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+<section
+  id="servicios"
+  class="w-full py-12 md:py-24 lg:py-32 bg-muted"
+>
   <div class="container mx-auto px-4 md:px-6">
-    <div
-      class="flex flex-col items-center justify-center space-y-4 text-center"
-    >
-      <div class="space-y-2" >
-        <div  data-aos="fade-down" class="inline-block rounded-lg bg-main uppercase text-white font-heading px-3 py-1 text-lg">
-          Nuestros Servicios
+    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+      <div class="space-y-2">
+        <div
+          data-aos="fade-down"
+          class="inline-block rounded-lg bg-main uppercase text-white font-heading px-3 py-1 text-lg"
+        >
+          Nuestros servicios
         </div>
-        <h2  data-aos="fade-up" class="text-4xl font-heading font-bold  sm:text-7xl">
-          Soluciones de Seguridad de Alto Nivel
+
+        <h2
+          data-aos="fade-up"
+          class="text-4xl font-heading font-bold sm:text-7xl"
+        >
+          Servicios de seguridad electrónica en Cartagena y Barranquilla
         </h2>
-        <p  data-aos="fade-up"
+
+        <p
+          data-aos="fade-up"
           class="font-body md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
         >
-        Descubra nuestro portafolio de servicios de seguridad avanzados, diseñados para proteger su negocio o su hogar.
+          En RCISAS ofrecemos soluciones profesionales de CCTV, cámaras de seguridad,
+          control de acceso, cableado estructurado y sistemas de detección de incendios
+          para empresas y proyectos residenciales en Cartagena y Barranquilla.
         </p>
       </div>
     </div>
-    
-    <div  class="mx-auto grid gap-6 py-12 md:grid-cols-4 md:gap-12" data-aos="fade-up">
-     
-        {
-          services.map((index) => (
-             <div   class="flex flex-col items-center space-y-4">
-        <div class="overflow-hidden rounded-lg " >
-          <img 
-            alt={index.alt}
-            loading="lazy"
-            width="300"
-            height="300"
-            decoding="async"
-            data-nimg="1"
-            class="aspect-square object-cover transition-all hover:scale-105"
-            src={index.img}
-            style="color: transparent;"
-          />
-        </div>
-        <div class="space-y-2 text-center">
-            <h3 class="text-lg lg:text-2xl font-bold font-heading">
-                <a href={index.src}>{index.title}</a>
-            </h3>
-            <p class="font-body">
-                {index.sub}
-            </p>
-        </div>
-      </div>
-          ))
-        }
-         
 
+    <div
+      class="mx-auto grid gap-6 py-12 md:grid-cols-4 md:gap-12"
+      data-aos="fade-up"
+    >
+      {
+        services.map((service) => (
+          <div class="flex flex-col items-center space-y-4">
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src={service.img}
+                alt={service.alt}
+                loading="lazy"
+                width="300"
+                height="300"
+                decoding="async"
+                class="aspect-square object-cover transition-all hover:scale-105"
+              />
+            </div>
+
+            <div class="space-y-2 text-center">
+              <h3 class="text-lg lg:text-2xl font-bold font-heading">
+                <a href={service.src}>
+                  {service.title}
+                </a>
+              </h3>
+              <p class="font-body">
+                {service.sub}
+              </p>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
