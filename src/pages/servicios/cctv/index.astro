@@ -1,0 +1,91 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Newsletter from "@/components/sections/Newsletter.astro";
+
+const services = [
+  {
+    img: "/sec_camera.jpg",
+    url: "/servicios/cctv/cctv-cartagena",
+    alt: "Instalación de CCTV para empresas",
+    short: "CCTV en Cartagena",
+    title: "Instalación y mantenimiento de CCTV en Cartagena",
+    sub: "Instalamos y mantenemos sistemas de CCTV para empresas, conjuntos residenciales y proyectos comerciales en Cartagena y Barranquilla. Garantizamos monitoreo confiable, imágenes claras y soporte técnico profesional.",
+  },
+  {
+    img: "/sec_camera.jpg",
+    url: "/servicios/cctv/cctv-barranquilla",
+    alt: "Instalación de CCTV para empresas",
+    short: "CCTV en Barranquilla",
+    title: "Instalación y mantenimiento de CCTV en Barranquilla",
+    sub: "Instalamos y mantenemos sistemas de CCTV para empresas, conjuntos residenciales y proyectos comerciales en Cartagena y Barranquilla. Garantizamos monitoreo confiable, imágenes claras y soporte técnico profesional.",
+  },
+];
+---
+
+<Layout
+  title="Servicios de Seguridad Electrónica en Cartagena y Barranquilla | RCI SAS"
+  description="Servicios de seguridad electrónica en Cartagena y Barranquilla. Instalamos CCTV, control de acceso, cableado estructurado y detección de incendios para empresas."
+>
+  <section class="py-12 lg:py-32">
+    <div class="mx-auto max-w-7xl space-y-7 px-6 mt-[20%] md:mt-15">
+      <h1 class="font-heading text-2xl md:text-2xl">
+        Servicios de Seguridad Electrónica en Cartagena y Barranquilla
+      </h1>
+
+      <h2
+        class="font-heading max-w-5xl text-4xl font-medium lg:text-5xl text-main"
+      >
+        Ofrecemos soluciones integrales para proteger personas, empresas y
+        propiedades con la mejor tecnología y un servicio profesional confiable.
+      </h2>
+    </div>
+  </section>
+  <section class="relative z-10 py-28 lg:py-32">
+    <div class="mx-auto max-w-7xl px-6 space-y-20">
+      {
+        services.map((item, i) => (
+          <div
+            class={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${i % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""}`}
+          >
+            {/* Imagen */}
+            <div class="w-full">
+              <img
+                src={item.img}
+                alt={item.alt}
+                class="w-full h-[250px] sm:h-[350px] lg:h-[400px] object-cover rounded-xl shadow-md"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Texto */}
+            <div class="space-y-5 text-left">
+              <span class="text-sm font-semibold font-heading uppercase text-gray-500 tracking-wide">
+                {item.short}
+              </span>
+
+              <a href={item.url}>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-main font-heading leading-tight">
+                  {item.title}
+                </h3>
+              </a>
+
+              <p class="text-gray-600 text-base sm:text-lg leading-relaxed font-body">
+                {item.sub}
+              </p>
+
+              <a
+                href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad%20electronica%20en%20Cartagena%20y%20Barranquilla"
+                target="_blank"
+                class="inline-block rounded-full bg-second px-6 py-3 text-base font-body font-medium text-white shadow-md transition hover:bg-main focus:outline-none focus:ring-2 focus:ring-third"
+              >
+                Cotizar servicio
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>

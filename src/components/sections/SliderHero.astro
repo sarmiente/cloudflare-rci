@@ -37,74 +37,90 @@ const heroImages = [
         class="absolute inset-0 transition-opacity duration-1000 opacity-0"
         data-slide={index}
       >
-        <img src={image.src} alt={image.alt} class="w-full h-full object-cover" />
+        <img 
+          src={image.src} 
+          alt={image.alt ?? 'Sistemas de seguridad electrónica en Cartagena y Barranquilla'} 
+          class="w-full h-full object-cover" 
+        />
       </div>
     ))}
   </div>
 
-  <!-- Overlay -->
+  <!-- Overlays -->
   <div class="absolute inset-0 bg-main/40"></div>
   <div class="absolute inset-0 bg-gradient-to-r from-main/90 to-second/50"></div>
 
-
-  
-
-<!-- Content -->
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-52 lg:pt-48" >
+  <!-- Content -->
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-52 lg:pt-48">
     <div class="max-w-4xl">
-      <div class="flex items-center mb-6" >
-        
-        <h1  data-aos="fade-right"  class="text-white font-heading text-lg md:text-xl lg:text-2xl font-medium " >
-          Somos Expertos en Sistemas de Seguridad
-        </h1>
 
-      </div>
+      <!-- H1 PRINCIPAL (SEO LOCAL) -->
+      <h1 
+        data-aos="fade-right"
+        class="text-white font-heading text-2xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+      >
+        Empresa de Seguridad Electrónica en Cartagena y Barranquilla
+      </h1>
 
-      <h2  data-aos="fade-right" class=" text-4xl md:text-5xl lg:text-7xl text-white mb-6 leading-tight font-heading font-bold">
-        La seguridad empieza 
-        
-        <span class="text-black block">por la prevención</span>
+      <!-- H2 DE APOYO SEMÁNTICO -->
+      <h2 
+        data-aos="fade-right" 
+        class="text-white md:text-2xl lg:text-3xl font-heading md:font-medium mb-4"
+      >
+        Sistemas profesionales de CCTV, control de acceso y conectividad segura
       </h2>
 
-      <p  data-aos="fade-right" class=" md:text-xl text-white mb-6 leading-relaxed font-body">
-          Instalamos soluciones modernas de seguridad que se adaptan a tus necesidades: CCTV, control de acceso, cableado estructurado y sistemas contra incendios. Protección real para cada espacio.
+      <!-- TEXTO DESCRIPTIVO LOCAL -->
+      <p 
+        data-aos="fade-right" 
+        class="md:text-xl text-white mb-6 leading-relaxed font-body"
+      >
+        En RCI SAS instalamos soluciones modernas de seguridad electrónica para empresas y proyectos
+        en Cartagena, Barranquilla y la Costa Caribe. Implementamos CCTV, control de acceso,
+        cableado estructurado y sistemas de detección de incendios con altos estándares técnicos.
       </p>
 
-      <div  data-aos="fade-up" class="flex flex-col sm:flex-row gap-4 mb-6 ">
-        <button class="flex items-center bg-third hover:bg-third/60 text-white px-4 py-2 font-heading font-bold rounded-xl hover:scale-105 transition">
-          <a href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad" target="_blank">Agenda una visita</a>
+      <!-- CTA -->
+      <div data-aos="fade-up" class="flex flex-col sm:flex-row gap-4 mb-6">
+        <a
+          href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad%20en%20Cartagena%20o%20Barranquilla"
+          target="_blank"
+          class="inline-flex items-center bg-third hover:bg-third/60 text-white px-5 py-3 font-heading font-bold rounded-xl hover:scale-105 transition"
+        >
+          Agenda una visita técnica
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1.5"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-        </button>
-        
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1.5"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
       </div>
 
-      <div  data-aos="fade-up" class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-body text-sm">
-        <div  class="flex items-center gap-3">
-              <Chulito class="w-5 h-5" />
-              <span class="text-gray-200">Personal Tecnico Experto y Especializado</span>
-          
+      <!-- TRUST SIGNALS -->
+      <div data-aos="fade-up" class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-body text-sm">
+        <div class="flex items-center gap-3">
+          <Chulito class="w-5 h-5" />
+          <span class="text-gray-200">Personal técnico certificado en Colombia</span>
         </div>
         <div class="flex items-center gap-3">
           <Chulito class="w-5 h-5" />
-          <span class="text-gray-200">Monitoreo 24/7</span>
+          <span class="text-gray-200">Soluciones para empresas y proyectos</span>
         </div>
         <div class="flex items-center gap-3">
           <Chulito class="w-5 h-5" />
-          <span class="text-gray-200">Productos certificados</span>
+          <span class="text-gray-200">Equipos y productos certificados</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
 
 <script is:inline>
 

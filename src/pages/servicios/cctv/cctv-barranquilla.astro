@@ -1,0 +1,75 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Newsletter from "@/components/sections/Newsletter.astro";
+
+const services = [
+  {
+    img: "/sec_camera.jpg",
+    alt: "Instalación de CCTV para empresas",
+    short: "CCTV en Barranquilla",
+    title: "Instalación y mantenimiento de CCTV en Barranquilla",
+    sub: "Instalamos y mantenemos sistemas de CCTV para empresas, conjuntos residenciales y proyectos comerciales en Cartagena y Barranquilla. Garantizamos monitoreo confiable, imágenes claras y soporte técnico profesional.",
+  },
+];
+---
+
+<Layout
+  title="Servicios de Seguridad Electrónica en Barranquilla | RCI SAS"
+  description="Servicios de seguridad electrónica en Barranquilla. Instalamos CCTV, control de acceso, cableado estructurado y detección de incendios para empresas."
+>
+  <section class="py-12 lg:py-32">
+    <div class="mx-auto max-w-7xl space-y-7 px-6 mt-[20%] md:mt-15">
+      <h1 class="font-heading text-2xl md:text-2xl">
+        Servicios de Seguridad Electrónica en Barranquilla
+      </h1>
+
+      <h2
+        class="font-heading max-w-5xl text-4xl font-medium lg:text-5xl text-main"
+      >
+        Ofrecemos soluciones integrales para proteger personas, empresas y
+        propiedades con la mejor tecnología y un servicio profesional confiable.
+      </h2>
+    </div>
+  </section>
+
+  <section class="relative z-10 mb-36 py-10 lg:py-20">
+    <div class="mx-auto max-w-8xl space-y-36 px-4 sm:px-12 lg:px-8 xl:px-16">
+      {
+        services.map((index) => (
+          <div class="mx-auto">
+            <span class="font-heading font-medium uppercase">
+              {index.short}
+            </span>
+            <div class="mt-14 gap-4 sm:grid sm:grid-cols-2 md:gap-6 lg:gap-12">
+              <h3 class="text-3xl font-bold sm:text-4xl font-heading text-main">
+                {index.title}
+              </h3>
+
+              <div class="mt-6 space-y-6 text-gray-700 sm:mt-0 font-body">
+                <p>{index.sub}</p>
+                <a
+                  href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad%20electronica%20en%20Cartagena%20y%20Barranquilla"
+                  target="_blank"
+                  class="font-body inline-block rounded-full bg-second px-10 py-3 text-xl font-medium text-white shadow-lg transition hover:bg-main focus:outline-none focus:ring-2 focus:ring-third focus:ring-offset-2"
+                >
+                  Cotizar servicio
+                </a>
+              </div>
+            </div>
+            <div class="mt-24 flex justify-center" data-aos="fade-up">
+              <img
+                class="rounded-md"
+                src={index.img}
+                alt={index.alt}
+                width="500"
+                height="300"
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>

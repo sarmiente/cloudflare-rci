@@ -1,0 +1,93 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Newsletter from "@/components/sections/Newsletter.astro";
+
+const services = [
+  {
+    img: "/sec_camera.jpg",
+    alt: "Instalación de CCTV para empresas",
+    short: "CCTV en Cartagena y Barranquilla",
+    url: "/servicios/cctv",
+    title: "Instalación y mantenimiento de CCTV en Cartagena y Barranquilla",
+    sub: "Instalamos y mantenemos sistemas de CCTV para empresas, conjuntos residenciales y proyectos comerciales en Cartagena y Barranquilla. Garantizamos monitoreo confiable, imágenes claras y soporte técnico profesional.",
+  },
+  {
+    img: "https://img.freepik.com/free-photo/man-getting-intercom-read-his-fingerprint-open-door-with-gloves_176474-2789.jpg?t=st=1724708641~exp=1724712241~hmac=7d48901837ad1c99d646ed945c00ead402de0b6159570a31a49dd7ff834b2357&w=740",
+    alt: "Instalacion de Sistemas de Control de Acceso ",
+    url: "/servicios/control-de-acceso",
+    short: "Control de Acceso en Cartagena y Barranquilla",
+    title: "Instalacion de Sistemas de Control de Acceso",
+    sub: "Olvídate de llaves perdidas o accesos no autorizados. Con nuestros sistemas de control de acceso tendrás el poder de decidir quién entra, cuándo y dónde, con soluciones inteligentes y adaptadas a tus necesidades.”",
+  },
+  {
+    img: "/network.jpg",
+    alt: "Soluciones de Cableado Estructurado",
+    short: "Cableado Estructurado en Cartagena y Barranquilla",
+    url: "/servicios/cableado-estructurado",
+
+    title: "Soluciones de Cableado Estructurado",
+    sub: "Conectamos tu negocio al futuro. Nuestro cableado estructurado asegura velocidad, estabilidad y orden en tus redes, para que tu empresa trabaje siempre con el máximo rendimiento.",
+  },
+  {
+    img: "https://img.freepik.com/free-photo/smoke-alarm-isolated-white_93675-132063.jpg?t=st=1724708899~exp=1724712499~hmac=c645c811599c40da79bd71da05ebe9a51141b3d102eb5b556425338f249eb154&w=740",
+    alt: "Instalación de sistemas de Detección de Incendios",
+    short: "Detección de Incendios en Cartagena y Barranquilla",
+    url: "/servicios/deteccion-de-incendios",
+    title: "Instalación de sistemas de Detección de Incendios",
+    sub: "La seguridad empieza por la prevención. Nuestros sistemas de detección de incendios reaccionan al instante, protegiendo vidas, activos y la continuidad de tu negocio.",
+  },
+];
+---
+
+<Layout
+  title="Servicios de Seguridad Electrónica en Cartagena y Barranquilla | RCI SAS"
+  description="Servicios de seguridad electrónica en Cartagena y Barranquilla. Instalamos CCTV, control de acceso, cableado estructurado y detección de incendios para empresas."
+>
+  <section class="relative z-10 py-28 lg:py-32">
+    <div class="mx-auto max-w-7xl px-6 space-y-20">
+      {
+        services.map((item, i) => (
+          <div
+            class={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${i % 2 !== 0 ? "lg:[&>*:first-child]:order-2" : ""}`}
+          >
+            {/* Imagen */}
+            <div class="w-full">
+              <img
+                src={item.img}
+                alt={item.alt}
+                class="w-full h-[250px] sm:h-[350px] lg:h-[400px] object-cover rounded-xl shadow-md"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Texto */}
+            <div class="space-y-5 text-left">
+              <span class="text-sm font-semibold font-heading uppercase text-gray-500 tracking-wide">
+                {item.short}
+              </span>
+
+              <a href={item.url}>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-main font-heading leading-tight">
+                  {item.title}
+                </h3>
+              </a>
+
+              <p class="text-gray-600 text-base sm:text-lg leading-relaxed font-body">
+                {item.sub}
+              </p>
+
+              <a
+                href="https://api.whatsapp.com/send/?phone=573136775143&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20seguridad%20electronica%20en%20Cartagena%20y%20Barranquilla"
+                target="_blank"
+                class="inline-block rounded-full bg-second px-6 py-3 text-base font-body font-medium text-white shadow-md transition hover:bg-main focus:outline-none focus:ring-2 focus:ring-third"
+              >
+                Cotizar servicio
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <Newsletter />
+</Layout>
