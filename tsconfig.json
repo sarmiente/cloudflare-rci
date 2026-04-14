@@ -3,10 +3,9 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "baseUrl": ".",
     "strictNullChecks": true,
     "paths": {
-      "@/sections/*": ["./src/components/sections*"],
+      "@sections*": ["./src/components/sections*"],
       "@/*": ["./src/*"],
     },
     "types": [

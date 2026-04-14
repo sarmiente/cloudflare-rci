@@ -5,11 +5,19 @@ import Services from '@/components/sections/Services.astro';
 import SliderHero from '@/components/sections/SliderHero.astro';
 import Layout from '../layouts/Layout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
+import SliderAlt from '@sections/SliderAlt.astro';
+import Dolor from '@sections/Dolor.astro';
+import Benefits from '@sections/Benefits.astro';
+import Proceso from '@sections/Proceso.astro';
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION} >
-	<SliderHero />
+	<SliderAlt />
+	<Dolor />
 	<Services />
+	<Benefits />
+	
 	<AboutUs />
+	<Proceso />
 	<ContactSection />
 </Layout>
